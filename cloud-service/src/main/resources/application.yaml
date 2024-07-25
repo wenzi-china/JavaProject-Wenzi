@@ -1,0 +1,19 @@
+#端口号为8082
+server:
+  port: 8082
+#提供服务的微服务名称
+spring:
+  application:
+    name: cloud
+#禁止注册自己
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka.center9001:9001/eureka
+  instance:
+    #显示主机名
+    instance-id: cloud-service
+    #显示主机ip
+    prefer-ip-address: false

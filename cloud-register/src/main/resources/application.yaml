@@ -1,0 +1,16 @@
+#端口号为9001，euraka注册中心默认端口号为8080
+server:
+  port: 9001
+#禁止注册自己
+eureka:
+  #eureka服务端实例名称
+  instance:
+    hostname: eureka.center9001
+    prefer-ip-address: false
+  client:
+    #禁止向自己注册
+    register-with-eureka: false
+    #禁止从自己获取eureka服务注册信息
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka.center9001:9001/eureka

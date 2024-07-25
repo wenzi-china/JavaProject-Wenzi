@@ -1,4 +1,4 @@
-package org.example;
+package com.wenzi.cloud;
 
 import org.apache.commons.collections4.CollectionUtils;
 
