@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class BasicController {
 
-    private User globleUser;
+    private static User globleUser;
 
     private String globleName;
 
