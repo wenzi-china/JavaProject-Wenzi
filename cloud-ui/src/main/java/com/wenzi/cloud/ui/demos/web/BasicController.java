@@ -23,36 +23,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
+ * @author 623692325@qq.com
  */
 @Controller
 public class BasicController {
 
-    // http://127.0.0.1:8080/hello?name=lisi
+    private User globalUser;
+
+    // http://127.0.0.1:8083/hello?name=lisi
+    //通过网关访问地址为  http://127.0.0.1:8084/cloud-service/hello?name=lisi
     @RequestMapping("/hello")
     @ResponseBody
     public String hello(@RequestParam(name = "name", defaultValue = "unknown user") String name) {
         return "Hello " + name;
     }
 
-    // http://127.0.0.1:8080/user
+    // http://127.0.0.1:8083/user
+    //通过网关访问地址为  http://127.0.0.1:8084/cloud-service/user
     @RequestMapping("/user")
     @ResponseBody
     public User user() {
-        User user = new User();
-        user.setName("theonefx");
-        user.setAge(666);
-        return user;
+        return globalUser;
     }
 
-    // http://127.0.0.1:8080/save_user?name=newName&age=11
+    // http://127.0.0.1:8083/save_user?name=wenzi&age=11
+    //通过网关访问地址为  http://127.0.0.1:8084/cloud-service/save_user?name=wenzi&age=11
     @RequestMapping("/save_user")
     @ResponseBody
     public String saveUser(User u) {
         return "user will save: name=" + u.getName() + ", age=" + u.getAge();
     }
 
-    // http://127.0.0.1:8080/html
+    // http://127.0.0.1:8083/html
+    //通过网关访问地址为  http://127.0.0.1:8084/cloud-service/html
     @RequestMapping("/html")
     public String html() {
         return "index.html";
@@ -63,5 +66,8 @@ public class BasicController {
             , @RequestParam(name = "age", defaultValue = "12") Integer age, User user) {
         user.setName("zhangsan");
         user.setAge(18);
+        globalUser = new User();
+        globalUser.setName("wenzi");
+        globalUser.setAge(20);
     }
 }

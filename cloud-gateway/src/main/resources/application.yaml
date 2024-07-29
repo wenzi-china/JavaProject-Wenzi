@@ -1,10 +1,19 @@
-#端口号为8082
+#端口号为8084
 server:
-  port: 8082
+  port: 8084
+#提供服务的微服务名称
 spring:
   application:
     #在服务中心的应用名称
-    name: cloud-service
+    name: gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          #自动映射eureka下的服务路由
+          enabled: true
+          #开启服务名称小写
+          lower-case-service-id: true
 #禁止注册自己
 eureka:
   client:
@@ -14,6 +23,6 @@ eureka:
       defaultZone: http://eureka.center9001:9001/eureka
   instance:
     #显示主机名
-    instance-id: cloud-service
+    instance-id: cloud-gateway
     #显示主机ip
     prefer-ip-address: false

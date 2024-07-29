@@ -4,7 +4,8 @@ server:
 #提供服务的微服务名称
 spring:
   application:
-    name: cloud
+    #在服务中心的应用名称
+    name: cloud-service
 #禁止注册自己
 eureka:
   client:

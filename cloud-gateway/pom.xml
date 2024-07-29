@@ -2,11 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cloud-ui</artifactId>
+    <artifactId>cloud-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>cloud-ui</name>
-    <description>cloud-ui</description>
-    <packaging>jar</packaging>
+    <name>cloud-gateway</name>
+    <description>cloud-gateway</description>
 
     <parent>
         <groupId>com.wenzi.cloud</groupId>
@@ -14,26 +13,20 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.6.13</spring-boot.version>
-    </properties>
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
     </dependencies>
 
@@ -54,7 +47,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.wenzi.cloud.ui.CloudUiApplication</mainClass>
+                    <mainClass>com.wenzi.cloud.cloudgateway.CloudGatewayApplication</mainClass>
                     <skip>true</skip>
                 </configuration>
                 <executions>

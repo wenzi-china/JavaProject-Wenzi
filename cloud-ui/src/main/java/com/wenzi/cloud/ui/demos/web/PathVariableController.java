@@ -28,14 +28,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class PathVariableController {
 
-    // http://127.0.0.1:8080/user/123/roles/222
+    // http://127.0.0.1:8083/user/123/roles/222
+    //通过网关访问地址为  http://127.0.0.1:8084/cloud-service/user/123/roles/222
     @RequestMapping(value = "/user/{userId}/roles/{roleId}", method = RequestMethod.GET)
     @ResponseBody
     public String getLogin(@PathVariable("userId") String userId, @PathVariable("roleId") String roleId) {
         return "User Id : " + userId + " Role Id : " + roleId;
     }
 
-    // http://127.0.0.1:8080/javabeat/somewords
+    // http://127.0.0.1:8083/javabeat/somewords
+    //通过网关访问地址为  http://127.0.0.1:8084/cloud-service/javabeat/somewords
     @RequestMapping(value = "/javabeat/{regexp1:[a-z-]+}", method = RequestMethod.GET)
     @ResponseBody
     public String getRegExp(@PathVariable("regexp1") String regexp1) {
