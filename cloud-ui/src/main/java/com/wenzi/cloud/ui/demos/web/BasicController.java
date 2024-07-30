@@ -28,11 +28,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class BasicController {
 
-    private static User globleUser;
+    private static User globalUser;
 
-    private String globleName;
+    private String globalName;
 
-    private Integer globleAge;
+    private Integer globalAge;
 
     // http://127.0.0.1:8083/hello?name=lisi
     //通过网关访问地址为  http://127.0.0.1:8084/cloud-service/hello?name=lisi
@@ -47,10 +47,10 @@ public class BasicController {
     @RequestMapping("/user")
     @ResponseBody
     public User user() {
-        globleUser = new User();
-        globleUser.setName(globleName);
-        globleUser.setAge(globleAge);
-        return globleUser;
+        globalUser = new User();
+        globalUser.setName(globalName);
+        globalUser.setAge(globalAge);
+        return globalUser;
     }
 
     // http://127.0.0.1:8083/save_user?name=wenzi&age=11
@@ -73,7 +73,7 @@ public class BasicController {
             , @RequestParam(name = "age", defaultValue = "12") Integer age, User user) {
         user.setName("zhangsan");
         user.setAge(18);
-        globleName = name;
-        globleAge = age;
+        globalName = name;
+        globalAge = age;
     }
 }
