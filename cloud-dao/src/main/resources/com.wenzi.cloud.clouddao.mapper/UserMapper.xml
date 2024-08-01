@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wenzi.cloud.clouddao.mapper.UserMapper">
+    <cache size="1024" eviction="LRU" flushInterval="60000" readOnly="true"/>
+    <select id="getAllUser" resultType="com.wenzi.cloud.clouddao.entity.User">
+        select * from cw_user;
+    </select>
+</mapper>

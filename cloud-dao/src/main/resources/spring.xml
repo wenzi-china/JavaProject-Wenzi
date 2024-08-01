@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+    <!--加载数据库连接信息配置文件 -->
+    <context:property-placeholder location="jdbc-config.properties"/>
+    <!-- 自动将 指定包下面的类加载到ioc容器中-->
+<!--    <bean>-->
+<!--        <context:component-scan base-package="com.wenzi.cloud.clouddao"/>-->
+<!--    </bean>-->
+    <!-- mapper 接口扫描其， 自动将mapper包下面的实现类自动注入到ioc容器中-->
+    <!-- 实现类Bean的名称默认为接口类名的首字母小写-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.wenzi.cloud.clouddao.mapper"/>
+    </bean>
+    <!--配置druid数据源的bean -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--配置sessionSqlFactoryBean 的bean -->
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--注入数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!--注入mybatis的配置文件 -->
+        <property name="configLocation" value="classpath:mybatis.xml"/>
+        <property name="mapperLocations" value="classpath:com.wenzi.cloud.clouddao.mapper/*.xml"/>
+    </bean>
+</beans>

@@ -3,6 +3,9 @@ server:
   port: 8084
 #提供服务的微服务名称
 spring:
+  #当前环境为开发环境
+  profiles:
+    active: dev
   application:
     #在服务中心的应用名称
     name: gateway

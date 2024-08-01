@@ -1,11 +1,20 @@
 #端口号为8083
 server:
   port: 8083
-#提供服务的微服务名称
 spring:
+  #当前环境为开发环境
+  profiles:
+    active: dev
   application:
     #在服务中心的应用名称
     name: cloud-service
+#spring:
+#  #当前环境为测试环境,active的值与pom文件中的profile对应
+#  profiles:
+#    active: test
+#  application:
+#    #在服务中心的应用名称
+#    name: cloud-service
 #禁止注册自己
 eureka:
   client:

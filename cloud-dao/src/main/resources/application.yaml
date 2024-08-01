@@ -2,6 +2,9 @@
 server:
   port: 8081
 spring:
+  #当前环境为开发环境
+  profiles:
+    active: dev
   application:
     #在服务中心的应用名称
     name: cloud-service
@@ -17,3 +20,4 @@ eureka:
     instance-id: cloud-dao
     #显示主机ip
     prefer-ip-address: false
+mybatis:

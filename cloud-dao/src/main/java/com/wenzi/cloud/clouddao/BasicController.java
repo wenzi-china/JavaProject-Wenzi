@@ -14,8 +14,9 @@
  * limitations under the License.
  */
 
-package com.wenzi.cloud.clouddao.demos.web;
+package com.wenzi.cloud.clouddao;
 
+import com.wenzi.cloud.clouddao.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +41,8 @@ public class BasicController {
     @ResponseBody
     public User user() {
         User user = new User();
-        user.setName("theonefx");
-        user.setAge(666);
+        user.setName("dao");
+        user.setAge(26);
         return user;
     }
 
